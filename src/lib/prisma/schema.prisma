@@ -9,7 +9,7 @@ datasource db {
 
 model User {
   id        Int       @id @default(autoincrement())  // Unique ID for each user
-  username  String    @unique                       // Username must be unique
+  password  String?    @unique                       // Username must be unique
   email     String    @unique                       // Email must be unique
 //   password  String                                  // Password stored securely
 //   bio       String?                                 // Optional bio

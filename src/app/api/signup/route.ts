@@ -4,27 +4,28 @@ import { z } from "zod";
 import prisma from "@/src/lib/prismaClient";
 
 const userSchema = z.object({
-  username: z.string().min(1),
+  password: z.string().min(2),
   email: z.string().email(),
 });
 
 export async function POST(req: Request) {
-  const { username, email } = userSchema.parse(await req.json());
+  const { email, password } = userSchema.parse(await req.json());
 
 
   try {
     const user = await prisma.user.create({
       data: {
         email: email,
-        username: username,
+        password: password,
       },
     });
 
     return NextResponse.json(user, { status: 201 });
   } catch (error) {
+    
     console.error(error);
     return NextResponse.json(
-      { error: "User creation failed" },
+      { error: "error registering user!" },
       { status: 500 }
     );
   }
