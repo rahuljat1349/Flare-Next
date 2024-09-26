@@ -19,8 +19,8 @@ function Page() {
           <CardDescription>To continue to flare </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          <Input placeholder="email" type="email" />
-          <Input placeholder="password" type="password" />
+          <Input placeholder="Email" type="email" />
+          <Input placeholder="Password" type="password" />
           <Button type="submit">Signin</Button>
         </CardContent>
         <CardFooter className="flex flex-col gap-4">
@@ -28,7 +28,7 @@ function Page() {
           <Button type="submit" variant={"outline"}>
             Log in with Google
           </Button>
-          <Link className="text-xs" href={""}>
+          <Link className="text-xs" href={"/signup"}>
             Don't have an account? SignUp.
           </Link>
         </CardFooter>
