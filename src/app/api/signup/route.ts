@@ -1,7 +1,7 @@
 // src/app/api/signup/route.ts
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import prisma from "@/src/lib/prismaClient";
+import prisma from "@/lib/prismaClient";
 
 const userSchema = z.object({
   password: z.string().min(2),
@@ -10,7 +10,6 @@ const userSchema = z.object({
 
 export async function POST(req: Request) {
   const { email, password } = userSchema.parse(await req.json());
-
 
   try {
     const user = await prisma.user.create({
@@ -22,7 +21,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json(user, { status: 201 });
   } catch (error) {
-    
     console.error(error);
     return NextResponse.json(
       { error: "error registering user!" },

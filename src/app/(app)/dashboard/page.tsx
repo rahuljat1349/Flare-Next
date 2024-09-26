@@ -1,5 +1,5 @@
 import React from "react";
-import prisma from "../../../lib/prismaClient";
+import prisma from "../../../../lib/prismaClient";
 
 async function testDatabase() {
   try {

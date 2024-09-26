@@ -2,7 +2,7 @@ import NextAuth, { CredentialsSignin } from "next-auth";
 import googleProvider from "next-auth/providers/google";
 import githubProvider from "next-auth/providers/github";
 import credentialsProvider from "next-auth/providers/credentials";
-import prisma from "./lib/prismaClient";
+import prisma from "../lib/prismaClient";
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     googleProvider({
@@ -25,7 +25,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           label: "Passowrd",
         },
       },
-      authorize: async (  credentials  ) => {
+      authorize: async (credentials) => {
         const email = credentials.email as string | undefined;
         const password = credentials.password as string | undefined;
         if (!(email && password)) {
